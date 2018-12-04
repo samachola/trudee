@@ -1,0 +1,339 @@
+.logo-wrap a img {
+    width: 67px !important;
+}
+
+.nav-header>ul>li>a {
+    font-weight: 100 !important;
+}
+
+.cta {
+    display: grid;
+}
+
+.cta a {
+    align-self: center;
+    color: #ffffff;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 700;
+    padding: .6em 1em;
+    border-radius: 8px;
+    text-transform: uppercase;
+    text-align: center;
+    background: linear-gradient(to right, rgb(0, 205, 253), rgba(199, 27, 135, 0.8));
+    letter-spacing: .2em;
+    transition: background .8s ease-in-out;
+    transition: border .4s ease-in-out;
+}
+
+.cta a:hover {
+    background: none;
+    border: 2px solid #00cdfd;
+    font-weight: 100;
+}
+
+.loggedin {
+    display: grid;
+    grid-template-columns: 50px auto;
+    background: none !important;
+    grid-gap: 5px;
+}
+
+.loggedin .profile,
+.loggedin h6 {
+    align-self: center;
+}
+
+.loggedin h6 {
+    color: #FFF;
+    font-size: .8em;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2px;
+}
+
+.loggedin h6 a {
+    font-weight: 100;
+    color: #00cdfd
+}
+
+.tr-home {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: url(../images/outdoor.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.tr-home .intro-overlay {
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(40, 22, 53, 0.59);
+}
+
+.tr-home .intro {
+    width: 57%;
+    padding: 12em 2em;
+    letter-spacing: .3em;
+}
+
+.tr-home .intro h2 {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.tr-home .intro a {
+    font-size: 1.2em;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    padding: .5em 1em;
+    color: #00cdfd;
+    border: 2px solid #00cdfd;
+    margin-top: 1.5em;
+    border-radius: 5px;
+}
+
+.title {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title h2 {
+    letter-spacing: .2em;
+    padding-top: 2em;
+    font-weight: 100;
+    font-size: 1.8em;
+    text-transform: uppercase;
+}
+
+.title h2 span {
+    font-weight: bold;
+}
+
+
+/* services section css */
+
+.tr-services {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.tr-services .services {
+    width: 80%;
+    margin: 1em auto;
+    padding: 3em;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 2em;
+}
+
+.tr-services .services .service {
+    padding: 3em .8em;
+    box-shadow: 0px 1px 6px 1px #e6e6e6;
+}
+
+.tr-services .services .service::hover {
+    transform: scale();
+}
+
+.tr-services .services .service .service-icon {
+    width: 75px;
+    margin: 0 auto;
+}
+
+.tr-services .services .service .service-icon svg {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tr-services .services .service .service-name {
+    text-align: center;
+    padding-top: 2em;
+}
+
+.tr-services .services .service .service-name h3 {
+    font-weight: 100;
+    font-size: 1em;
+    letter-spacing: .2em;
+    text-transform: capitalize;
+}
+
+.tr-services .services .service .service-name p {
+    line-height: 12px;
+    font-weight: 200;
+    margin-top: 2em;
+}
+
+
+/* Join us section */
+
+.tr-join {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: #f8f8f8;
+    clear: both;
+}
+
+.tr-join .join {
+    width: 80%;
+    margin: 2em auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-gap: 2em;
+}
+
+.tr-join .join .steps {
+    padding: 2em 3em;
+    text-align: justify;
+}
+
+.tr-join .join .steps h2 {
+    font-size: 1.8em;
+    font-weight: 400;
+}
+
+.tr-join .join .steps p {
+    padding-top: 1.5em;
+    font-size: 1.3em;
+}
+
+.tr-join .join .steps a {
+    color: #f8f8f8;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: .4em 1em;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+    letter-spacing: .2em;
+    margin-top: 2em;
+    background: #2b1437;
+}
+
+.tr-join .join .steps-image {
+    background: url(../images/plumber.jpg) no-repeat center center #ccc;
+    background-size: cover;
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    align-self: center;
+    justify-self: right;
+}
+
+
+/* Parallax section */
+
+.tr-para {
+    width: 100%;
+    height: 250px;
+    margin: 0 auto;
+    padding: 0;
+    background: url(../images/cleaninghome.jpg) no-repeat center center #2b1437;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.tr-para .para-over {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: rgba(43, 20, 55, 0.54);
+    display: grid;
+}
+
+.tr-para .para-over .testimonial {
+    width: 70%;
+    margin: 0 auto;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-gap: 2em;
+}
+
+.tr-para .para-over .testimonial .image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #00cdfd;
+    overflow: hidden;
+    justify-self: right;
+}
+
+.tr-para .para-over .testimonial .image img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.tr-para .para-over .testimonial .testimony {
+    align-self: center;
+    text-align: justify;
+}
+
+.tr-para .para-over .testimonial .testimony p {
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 300;
+}
+
+.tr-para .para-over .testimonial .testimony p span {
+    color: #00cdfd;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.tr-para .para-over .testimonial .testimony h4 {
+    color: #00cdfd;
+    font-weight: 500;
+}
+
+#buton {
+    position: absolute;
+    z-index: 9;
+    opacity: 1;
+    border: #593b9a 2px solid;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    border-radius: 5px;
+    line-height: 43px;
+    background: #593b9a;
+    bottom: 0;
+    left: calc(55% - 4.8vh);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    color: #fff;
+}
+
+.register select {
+    min-width: 400px;
+    height: 3em;
+    border: 2px solid #b3eeff;
+    color: #fff;
+}
+
+.register .au-input {
+    color: #fff !important;
+}
+
+section {
+    overflow: scroll !important;
+}
+
+.profile {
+    display: grid;
+    text-align: center;
+}
+
+.profile img {
+    justify-self: center;
+}
+
+section.protected-gallery {
+    background: #0cb3db !important;
+}
+
+.protected-gallery .protected-gallery-wrap {
+    top: 35% !important;
+}

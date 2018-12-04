@@ -1,0 +1,31 @@
+<div id="title">
+    <div class="container">
+        <div class="protected-gallery__content textpart float-left col-lg-5 col-md-6 text-left">
+            <h1 class="weight-slim text-uppercase"><b>Hello <br>Welcome To Trudy</b></h1>
+            <p>You Don't have a Trudy account yet? Click the sign up button below to sign up</p>
+            <div class="button-group mt-4">
+                <a routerLink="/client" class="au-btn au-btn--p50">Trudy Client </a>
+                <button class="au-btn--dark au-btn au-btn--p50" id="buton" (click)="goToPartners()">Service Provider</button>
+
+            </div>
+        </div>
+        <div class="protected-gallery__content float-right col-lg-5 col-md-6">
+            <h3>Hello Welcome To Trudy!</h3>
+            <p class="mb-5 text-normal">Please Enter your username & password below to continue</p>
+            <p class="mb-5 text-normal">{{ error }}</p>
+            <form class="m-t-25" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <div class="col-lg-12 mb-5">
+                    <input class="au-input" type="text" name="email" [(ngModel)]="user.email" placeholder="Your username ...">
+                </div>
+                <div class="col-lg-12">
+                    <input class="au-input" type="password" name="password" [(ngModel)]="user.password" placeholder="Your password ...">
+                </div>
+                <button class="au-btn au-btn--dark au-btn--p50" type="submit">Continue Login</button>
+                <div class="col-lg-12 mt-5">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Remember me</label>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
