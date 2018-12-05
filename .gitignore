@@ -44,4 +44,4 @@ Thumbs.db
 
 # Other
 
-src/environments*
+/src/environments
