@@ -331,16 +331,16 @@
                                 <a href="#">About</a>
                             </li>
 
-                            <li *ngIf="!authenticated" class="list-inline-item has-dropdown">
+                            <li class="list-inline-item has-dropdown">
                                 <a routerLink="/login">Login</a>
                             </li>
                         </ul>
                     </nav>
 
-                    <!-- <div *ngIf="authenticated" class="search-btn-wrap col-md-3 loggedin">
+                    <div class="search-btn-wrap col-md-3 loggedin">
                         <div class="profile"><img src="assets/images/pro.jpg" class="rounded-circle" width=""></div>
-                        <h6 (click)="logout()">{{currentUser.name}} | <a routerLink="/login">Sign Out</a></h6>
-                    </div> -->
+                        <h6 (click)="logout()">Username | Sign Out</h6>
+                    </div>
                 </div>
 
                 <div class="col-md-3 cta" *ngIf="!authenticated">
