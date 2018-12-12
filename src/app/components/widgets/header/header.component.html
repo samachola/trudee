@@ -331,19 +331,19 @@
                                 <a href="#">About</a>
                             </li>
 
-                            <li class="list-inline-item has-dropdown">
+                            <li *ngIf="!isLoggedIn" class="list-inline-item has-dropdown">
                                 <a routerLink="/login">Login</a>
                             </li>
                         </ul>
                     </nav>
 
-                    <div class="search-btn-wrap col-md-3 loggedin">
+                    <div *ngIf="isLoggedIn" class="search-btn-wrap col-md-3 loggedin">
                         <div class="profile"><img src="assets/images/pro.jpg" class="rounded-circle" width=""></div>
-                        <h6 (click)="logout()">Username | Sign Out</h6>
+                        <h6 (click)="logout()"> {{currentUser.name}} | Sign Out</h6>
                     </div>
                 </div>
 
-                <div class="col-md-3 cta" *ngIf="!authenticated">
+                <div class="col-md-3 cta" *ngIf="!isLoggedIn">
                     <a routerLink="/partner" class="join">Make money</a>
                 </div>
             </div>

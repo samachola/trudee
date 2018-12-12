@@ -21,7 +21,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.user);
     this.auth.emailSignIn(this.user)
-      .then(res => console.log(res))
+      .then(res => {
+        this.auth.getUserDetails(res.user.uid);
+        this.router.navigate(['/']);
+      })
       .catch(err => console.log(err));
   }
 

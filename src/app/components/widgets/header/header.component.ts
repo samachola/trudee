@@ -1,24 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
+import { Subscription } from 'rxjs';
+
+export interface User {
+  name: string;
+  email: string;
+  phone: string;
+}
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   isLoggedIn = false;
-  constructor(public auth: AuthService, public router: Router) { }
+  currentUser: User;
+  currentUserSubscription: Subscription;
+
+  name: string;
+  constructor(public auth: AuthService, public router: Router) {
+  }
 
   ngOnInit() {
-    const user = this.auth.isLoggedIn();
-    if (user) {
-      this.isLoggedIn = true;
-    }
+    this.currentUserSubscription = this.auth.currentUser.subscribe(user => {
+      this.currentUser = user;
+      if (this.currentUser) {
+        this.isLoggedIn = true;
+      }
+    });
+  }
 
-    console.log(user);
-    console.log(this.isLoggedIn);
+  ngOnDestroy() {
+    this.currentUserSubscription.unsubscribe();
   }
 
   /**
@@ -27,7 +42,12 @@ export class HeaderComponent implements OnInit {
   logout() {
     console.log('we logging out');
     this.auth.userSignOut()
-      .then(() => this.router.navigate(['/login']))
+      .then(() => {
+        localStorage.clear();
+        this.currentUserSubscription.unsubscribe();
+        this.isLoggedIn = false;
+        this.router.navigate(['/login']);
+      })
       .catch(err => console.log(err));
   }
 
