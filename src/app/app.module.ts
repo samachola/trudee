@@ -22,6 +22,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { PartnersService } from './services/partners/partners.service';
 import { GooglePlacesDirective } from './directives/google-places.directive';
 import { ClientComponent } from './components/auth/client/client.component';
+import { ServicesComponent } from './components/services/services.component';
+import { CategoryService } from './services/categories/category.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ClientComponent } from './components/auth/client/client.component';
     AuthComponent,
     RegisterComponent,
     GooglePlacesDirective,
-    ClientComponent
+    ClientComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { ClientComponent } from './components/auth/client/client.component';
   ],
   providers: [
     AuthService,
-    PartnersService
+    PartnersService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

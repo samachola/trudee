@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
 import { PartnersService } from '../../../services/partners/partners.service';
+import { CategoryService } from '../../../services/categories/category.service';
 
 import { MapsAPILoader } from '@agm/core';
 /// <reference types="@types/googlemaps" />
@@ -25,10 +26,12 @@ export class RegisterComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public partnerService: PartnersService,
+    public categoryService: CategoryService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone) { }
 
   ngOnInit() {
+    this.getAllCategories();
 
     this.mapsAPILoader.load().then(
       () => {
@@ -94,7 +97,7 @@ export class RegisterComponent implements OnInit {
    */
   createPartner(uid, user) {
     const { name, email, idcard, phone } = user;
-    const partnerdetails = { name, email, idcard, phone, location: this.location, lat: this.lat, lng: this.lng };
+    const partnerdetails = { name, email, idcard, phone, location: this.location, lat: this.lat, lng: this.lng, category: this.category };
 
     console.log(partnerdetails);
 
@@ -108,6 +111,17 @@ export class RegisterComponent implements OnInit {
 
   onChange(event): void {
     this.category = event.target.value;
+  }
+
+  getAllCategories() {
+    this.categoryService.getAllCategories()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          const category = { ...doc.data() };
+          this.categories.push(category);
+        });
+      })
+      .catch(err => console.log(err));
   }
 
 }

@@ -46,6 +46,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         localStorage.clear();
         this.currentUserSubscription.unsubscribe();
         this.isLoggedIn = false;
+
+        // TODO: create a dedicate logout route.
+
         this.router.navigate(['/login']);
       })
       .catch(err => console.log(err));

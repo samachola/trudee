@@ -27,4 +27,13 @@ export class PartnersService {
       ...data
     });
   }
+
+  /**
+   * Get all available partners
+   */
+  async getAllPartners() {
+
+    return await this.db.collection('partners').get().toPromise();
+
+  }
 }
