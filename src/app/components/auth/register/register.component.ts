@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   lat: number;
   lng: number;
   location: string;
+  profilePicture: File;
 
   @ViewChild('search') public searchElement: ElementRef;
   constructor(
@@ -111,6 +112,10 @@ export class RegisterComponent implements OnInit {
 
   onChange(event): void {
     this.category = event.target.value;
+  }
+
+  onFileChange(event): void {
+    console.log('onFileChange');
   }
 
   getAllCategories() {

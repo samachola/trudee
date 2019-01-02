@@ -48,8 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isLoggedIn = false;
 
         // TODO: create a dedicate logout route.
-
-        this.router.navigate(['/login']);
+        this.router.navigate(['/logout']);
       })
       .catch(err => console.log(err));
   }

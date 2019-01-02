@@ -24,6 +24,8 @@ import { GooglePlacesDirective } from './directives/google-places.directive';
 import { ClientComponent } from './components/auth/client/client.component';
 import { ServicesComponent } from './components/services/services.component';
 import { CategoryService } from './services/categories/category.service';
+import { ServiceProviderComponent } from './components/service-provider/service-provider.component';
+import { LogoutComponent } from './components/auth/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CategoryService } from './services/categories/category.service';
     RegisterComponent,
     GooglePlacesDirective,
     ClientComponent,
-    ServicesComponent
+    ServicesComponent,
+    ServiceProviderComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,226 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+        <form method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Book Pro</h5>
+                    <p class="float-left col-md-12">Enter the Job description and time in the form below.</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                </div>
+                <div class="modal-footer">
+
+                    <div class="col-md-12 float-left p-0">
+                        <div class="form-group">
+                            <label class="col-md-12 p-0">Category *</label>
+                            <div class="col-md-12 p-0">
+                                <select class="form-control form-control-line" (change)="onChange($event)" name="category" required>
+                                  <option [value]="partner.category" selected>{{ partner.category }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12 p-0">Date *</label>
+                            <div class="col-md-12 p-0">
+                                <input type="date" class="form-control form-control-line" name="date" value="{{date}}" (change)="onDateChange($event)" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-12 p-0">Job Description *</label>
+                            <div class="col-md-12 p-0">
+                                <textarea rows="5" class="form-control form-control-line" name="description" value="{{description}}" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="" data-dismiss="modal">Close</button>
+                    <button type="button" (click)="requestPro()" class="au-btn au-btn--dark au-btn--p40 float-right">Request Pro</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper" class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <!-- HEADER DESKTOP-->
+    <app-header></app-header>
+
+    <!-- END HEADER MOBILE-->
+    <div class="container p-b-70">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-5 align-self-center">
+                    <h4 class="page-title">Service Provider</h4>
+                    <div class="d-flex align-items-center">
+
+                    </div>
+                </div>
+                <div class="col-7 align-self-center">
+                    <div class="d-flex no-block justify-content-end align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a routerLink="/services">back</a>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="" rel="tooltip" class="tooly" data-toggle="tooltip" data-placement="bottom" title="Edit details">
+                                <span class="icon-pencill"></span>
+                            </a>
+                            <div class="m-t-30 profile">
+                                <img src="assets/images/pro.jpg" class="rounded-circle" width="100" />
+                                <h4 class="card-title m-t-10">{{ partner.name }}</h4>
+                                <p class="card-subtitle">{{ partner.category }}</p>
+                                <div class="row text-center justify-content-md-center ratestar">
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star"></span>
+                                    </a>
+                                    <a href="#">
+                                        <span class="fa fa-star-o"></span>
+                                    </a>
+                                </div>
+                                <button class="btn au-btn m-t-20" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Request Service</button>
+                            </div>
+                        </div>
+                        <div>
+                            <hr>
+                        </div>
+
+                        <div class="card-body">
+                            <a href="" rel="tooltip" class="tooly" data-toggle="tooltip" data-placement="bottom" title="Edit details">
+                                <span class="icon-pencill"></span>
+                            </a>
+                            <h6>Email address </h6>
+                            <p class="text-muted">{{partner.email}}</p>
+                            <h6 class="p-t-30 db">Phone</h6>
+                            <p class="text-muted">{{partner.phone}}</p>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <div class="card">
+                        <!-- Tabs -->
+                        <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item" (click)="tab('profile')">
+                                <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#" aria-controls="pills-profile" aria-selected="false">Profile</a>
+                            </li>
+
+                        </ul>
+                        <!-- Tabs -->
+                        <div class="tab-content" id="pills-tabContent">
+                            <div *ngIf="profile" class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <div class="card-body">
+                                    <a *ngIf="currentUser" href="" rel="tooltip" class="tooly" data-toggle="tooltip" data-placement="bottom" title="Edit details">
+                                        <span class="icon-pencill"></span>
+                                    </a>
+                                    <div class="row">
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
+                                            <br>
+                                            <p class="text-muted">{{ partner.name }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
+                                            <br>
+                                            <p class="text-muted">{{ partner.phone }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
+                                            <br>
+                                            <p class="text-muted">{{ partner.email }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6"> <strong>Location</strong>
+                                            <br>
+                                            <p class="text-muted">{{ partner.location }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="map-box">
+                                        <hr>
+                                        <h6 class="p-t-30 db">Location</h6>
+                                        <br/>
+                                        <!--The div element for the map -->
+                                        <agm-map [latitude]="partner.lat" [longitude]="partner.lng">
+                                            <agm-marker [latitude]="partner.lat" [longitude]="partner.lng"></agm-marker>
+                                        </agm-map>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
+            <!-- Row -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <!--             <footer class="footer text-center">
+                All Rights Reserved by AdminBite admin. Designed and Developed by
+                <a href="https://wrappixel.com">WrapPixel</a>.
+            </footer> -->
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+</div>

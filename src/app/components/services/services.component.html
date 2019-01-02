@@ -58,7 +58,7 @@
                             <div class="au-input-group">
                                 <select class="form-control" (change)="onChange($event)" id="exampleSelect1">
                                     <option disabled="disabled">Select Category</option>
-                                    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                                    <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -87,17 +87,17 @@
                             <div class="sale-tag"><span class="icon-badge"></span></div>
                             <img src="assets/images/shop-01.jpg" alt="young lucy" />
                             <div class="tool-box">
-                                <a class="js-addcart" routerLink="/">
+                                <a class="js-addcart" routerLink="/services/{{partner.id}}">
                                     Request Service
                                 </a>
-                                <a routerLink="/">
+                                <a routerLink="/services/{{partner.id}}">
                                     View Profile
                                 </a>
                             </div>
                         </div>
                         <div class="content">
                             <h3>
-                                <a class="js-name" routerLink="/">{{ partner.name }}</a>
+                                <a class="js-name" routerLink="/services/{{partner.id}}">{{ partner.name }}</a>
                             </h3>
                             <span class="price">{{partner.category}}</span>
                             <div class="star-rating">

@@ -36,4 +36,22 @@ export class PartnersService {
     return await this.db.collection('partners').get().toPromise();
 
   }
+
+  /**
+   * filter partners
+   * @param category - partner's category
+   **/
+  async filterPartners(category: String) {
+    return await this.db.collection('partners', ref => ref.where('category', '==', category)).get().toPromise();
+  }
+
+  /**
+   * Get single partner
+   * @param partnerId - partnerId
+   */
+  async getPartner(partnerId) {
+
+    return await this.partnersRef.doc(partnerId).get().toPromise();
+
+  }
 }

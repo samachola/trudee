@@ -56,9 +56,14 @@ export class ServicesComponent implements OnInit {
     this.category = event.target.value;
   }
 
-  filterPartners() {
-    console.log('filter queries here');
-    console.log({ filter: { location: this.location, lat: this.lat, lng: this.lng, category: this.category } });
+  async filterPartners() {
+    const filteredPartners = [];
+    const querySnapshot = await this.partnerService.filterPartners(this.category);
+    for (const doc of querySnapshot.docs) {
+      filteredPartners.push({ ...doc.data(), id: doc.id });
+    }
+
+    this.partners = filteredPartners;
   }
 
   /**
@@ -70,7 +75,6 @@ export class ServicesComponent implements OnInit {
         querysnapShot.forEach(doc => {
           const partnerDetails = { ...doc.data(), id: doc.id };
           this.partners.push(partnerDetails);
-          console.log({ doc: doc.data() });
         });
       })
       .catch(err => console.log(err));
