@@ -19,6 +19,8 @@ export class ServicesComponent implements OnInit {
   categories = [];
   partners = [];
 
+  google: any;
+
 
   @ViewChild('search') public searchElement: ElementRef;
   constructor(
@@ -34,9 +36,11 @@ export class ServicesComponent implements OnInit {
 
     this.mapsAPILoader.load().then(
       () => {
+        // @ts-ignore
         const autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
         autocomplete.addListener('place_changed', () => {
           this.ngZone.run(() => {
+            // @ts-ignore
             const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
             this.lat = place.geometry.location.lat();

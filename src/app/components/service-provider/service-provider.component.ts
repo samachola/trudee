@@ -20,7 +20,9 @@ export class ServiceProviderComponent implements OnInit {
   };
   category: any;
   date: any;
-  description: any;
+  booking = {
+    description: '',
+  };
   settings = false;
   profile = true;
   timeline: boolean;
@@ -45,7 +47,7 @@ export class ServiceProviderComponent implements OnInit {
   }
 
   async requestPro() {
-    console.log({ date: this.date, description: this.description, category: this.partner.category });
+    console.log({ date: this.date, description: this.booking.description, category: this.partner.category });
   }
 
 

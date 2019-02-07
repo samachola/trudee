@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   location: string;
   profilePicture: File;
 
+
   @ViewChild('search') public searchElement: ElementRef;
   constructor(
     public authService: AuthService,
@@ -36,9 +37,11 @@ export class RegisterComponent implements OnInit {
 
     this.mapsAPILoader.load().then(
       () => {
+        // @ts-ignore
         const autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
         autocomplete.addListener('place_changed', () => {
           this.ngZone.run(() => {
+            // @ts-ignore
             const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
             this.lat = place.geometry.location.lat();
