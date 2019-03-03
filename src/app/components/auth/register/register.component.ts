@@ -2,18 +2,32 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { AuthService } from '../../../services/auth/auth.service';
 import { PartnersService } from '../../../services/partners/partners.service';
 import { CategoryService } from '../../../services/categories/category.service';
+import { Router } from '@angular/router';
 
-import { MapsAPILoader } from '@agm/core';
-/// <reference types="@types/googlemaps" />
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 
-  user = {};
+  user = {
+    name: '',
+    email: '',
+    phone: '',
+    idcard: '',
+    category: '',
+    location: '',
+    lat: null,
+    lng: null,
+    password: '',
+    cpassword: '',
+  };
+
   categories = [];
   category: string;
   error: string;
@@ -23,41 +37,21 @@ export class RegisterComponent implements OnInit {
   location: string;
   profilePicture: File;
 
-
-  @ViewChild('search') public searchElement: ElementRef;
+  @ViewChild('placesRef') placesRef: GooglePlaceDirective;
   constructor(
     public authService: AuthService,
     public partnerService: PartnersService,
     public categoryService: CategoryService,
-    private mapsAPILoader: MapsAPILoader,
+    public afAuth: AngularFireAuth,
+    public router: Router,
     private ngZone: NgZone) { }
 
   ngOnInit() {
     this.getAllCategories();
-
-    this.mapsAPILoader.load().then(
-      () => {
-        // @ts-ignore
-        const autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
-        autocomplete.addListener('place_changed', () => {
-          this.ngZone.run(() => {
-            // @ts-ignore
-            const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-            this.lat = place.geometry.location.lat();
-            this.lng = place.geometry.location.lng();
-            this.location = place.formatted_address;
-
-            if (place.geometry === undefined || place.geometry === null) {
-              return;
-            }
-          });
-        });
-      }
-    );
   }
 
   onSubmit() {
+    const isValid = this.validUserData();
     this.authService.emailSignup(this.user)
       .then(res => {
         console.log(`uid: ${res.user.uid}`);
@@ -71,6 +65,17 @@ export class RegisterComponent implements OnInit {
           this.error = 'Something went wrong! Please try again';
         }
       });
+  }
+
+  validUserData() {
+    // TODO validate user data
+    const { name, email, idcard, phone, category, location, lat, lng } = this.user;
+    if (name === '' || name === undefined) {
+      this.error = 'Name is required';
+    }
+
+
+    return false;
   }
 
   /**
@@ -100,36 +105,43 @@ export class RegisterComponent implements OnInit {
    * @param user - userDetails
    */
   createPartner(uid, user) {
-    const { name, email, idcard, phone } = user;
-    const partnerdetails = { name, email, idcard, phone, location: this.location, lat: this.lat, lng: this.lng, category: this.category };
-
-    console.log(partnerdetails);
+    const { name, email, idcard, phone, category, location, lat, lng } = user;
+    const partnerdetails = { name, email, idcard, phone, location, lat, lng, category };
 
     this.partnerService.newPartner(uid, partnerdetails)
       .then(res => {
         console.log({ response: res });
         console.log('We should get response {Object}');
+        this.router.navigate(['/login']);
       })
       .catch(err => console.log({ response: err }));
   }
 
+  public handleAddressChange(address) {
+    // Do some stuff
+    console.log(address);
+
+    this.lat = address.geometry.location.lat();
+    this.lng = address.geometry.location.lng();
+    this.location = address.formatted_address;
+  }
+
   onChange(event): void {
-    this.category = event.target.value;
+    this.user.category = event.target.value;
   }
 
   onFileChange(event): void {
     console.log('onFileChange');
   }
 
-  getAllCategories() {
-    this.categoryService.getAllCategories()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          const category = { ...doc.data() };
-          this.categories.push(category);
-        });
-      })
-      .catch(err => console.log(err));
+  async getAllCategories() {
+    const categoriesQuerySnapshot = await this.categoryService.getAllCategories();
+    categoriesQuerySnapshot.subscribe(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const category = { ...doc.data() };
+        this.categories.push(category);
+      });
+    });
   }
 
 }

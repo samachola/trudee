@@ -50,8 +50,6 @@ export class PartnersService {
    * @param partnerId - partnerId
    */
   async getPartner(partnerId) {
-
     return await this.partnersRef.doc(partnerId).get().toPromise();
-
   }
 }

@@ -372,3 +372,244 @@ section.protected-gallery {
     color: #FFF;
     background: #00cdfd;
 }
+
+
+/* Registration Page Design */
+
+.registration {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.registration .intro {
+    width: 78%;
+    margin: 0 auto;
+    padding-top: 12px;
+}
+
+.intro p {
+    font-size: 16px;
+}
+
+.registration .form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.registration .form form {
+    width: 60%;
+}
+
+.registration .form form .form-row {
+    width: 100%;
+    margin: 4% auto;
+    display: flex;
+    align-items: center;
+}
+
+.registration .form form .form-row .wrapper {
+    width: 48%;
+    margin-left: 2%;
+}
+
+.registration .form form .form-row .wrapper label {
+    display: block;
+    font-family: inherit;
+    text-transform: capitalize;
+    font-size: 16px;
+}
+
+.registration .form form .form-row .wrapper input[type="text"],
+.registration .form form .form-row .wrapper input[type="email"],
+.registration .form form .form-row .wrapper input[type="password"],
+.registration .form form .form-row .wrapper select {
+    width: 98%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #8c8c8c;
+    box-shadow: none;
+}
+
+.registration .form form .form-row .wrapper select {
+    width: 98%;
+    height: 45px;
+}
+
+.registration .form form .form-row .wrapper input[type="submit"] {
+    width: 98%;
+    margin: 0 auto;
+    text-align: center;
+    background: #00cdfd;
+    padding: 7px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #00cdfd;
+}
+
+.registration .form form .form-row .wrapper a {
+    color: #2c1437;
+    font-size: 14px;
+    text-decoration: underline;
+    float: right;
+    margin-right: 10px;
+}
+
+.services-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.services-container .services-intro {
+    width: 100%;
+    margin: 0 auto;
+    background: #00cdfd;
+    padding: 40px 0;
+}
+
+.services-container .services-intro .intro {
+    width: 78%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.services-container .services-intro .intro h2 {
+    font-size: 24px;
+    font-weight: 200;
+    width: 65%;
+}
+
+
+/* List of providers section */
+
+.services-container .service-providers {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.services-container .service-providers .filter {
+    width: 30%;
+    align-self: flex-start;
+    margin-right: 20px;
+    background-color: #FFF;
+    border: 1px #F2F2F2 solid;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.services-container .service-providers .filter form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.services-container .service-providers .filter form .wrapper {
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.services-container .service-providers .filter form .wrapper label {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #2b1437;
+}
+
+.services-container .service-providers .filter form .wrapper input[type="text"] {
+    width: 100%;
+    margin: 0 auto;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+}
+
+.services-container .service-providers .filter form .wrapper select {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #cecece;
+    height: 42px;
+}
+
+.services-container .service-providers .filter form .wrapper input[type="submit"] {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    background: #00cdfd;
+    padding: 7px;
+    color: #2c1437;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #00cdfd;
+}
+
+.services-container .service-providers .providers {
+    width: 50%;
+}
+
+.services-container .service-providers .providers .provider {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+}
+
+.services-container .service-providers .providers .provider .provider-image {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.services-container .service-providers .providers .provider .provider-image .category {
+    background: #00cdfd;
+    padding: 4px;
+    color: #2b1437;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.services-container .service-providers .providers .provider .provider-image img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.services-container .service-providers .providers .provider .provider-details {
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 17px 0;
+}
+
+.services-container .service-providers .providers .provider .provider-details .name {
+    font-weight: 200;
+    font-size: 20px;
+    color: #2b1437;
+}
+
+.services-container .service-providers .providers .provider .provider-details .category {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.services-container .service-providers .providers .provider .provider-details .contact {
+    display: flex;
+    align-items: flex-start;
+    color: #2b1437
+}
+
+.services-container .service-providers .providers .provider .provider-details .contact span {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.services-container .service-providers .providers .provider .provider-details button {
+    background: #2b1437;
+    color: #FFF;
+    padding: 5px;
+}

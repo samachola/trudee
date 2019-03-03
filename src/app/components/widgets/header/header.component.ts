@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 export interface User {
   name: string;
@@ -15,25 +16,23 @@ export interface User {
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  isLoggedIn = false;
-  currentUser: User;
+  // isLoggedIn = false;
+  currentUser: any;
   currentUserSubscription: Subscription;
 
   name: string;
-  constructor(public auth: AuthService, public router: Router) {
+  constructor(public auth: AuthService, public router: Router, public afAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
-    this.currentUserSubscription = this.auth.currentUser.subscribe(user => {
-      this.currentUser = user;
-      if (this.currentUser) {
-        this.isLoggedIn = true;
-      }
-    });
+    this.currentUser = this.auth.getCurrentUserDetails();
   }
 
   ngOnDestroy() {
-    this.currentUserSubscription.unsubscribe();
+  }
+
+  get isLoggedIn() {
+    return this.afAuth.auth.currentUser;
   }
 
   /**
@@ -44,8 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.auth.userSignOut()
       .then(() => {
         localStorage.clear();
-        this.currentUserSubscription.unsubscribe();
-        this.isLoggedIn = false;
+        // this.isLoggedIn = false;
 
         // TODO: create a dedicate logout route.
         this.router.navigate(['/logout']);

@@ -32,12 +32,12 @@
 
                     <div *ngIf="isLoggedIn" class="search-btn-wrap col-md-3 loggedin">
                         <div class="profile"><img src="assets/images/pro.jpg" class="rounded-circle" width=""></div>
-                        <h6 (click)="logout()"> {{currentUser.name}} | Sign Out</h6>
+                        <h6 (click)="logout()"> {{ currentUser.name }} <span>Log out</span></h6>
                     </div>
                 </div>
 
                 <div class="col-md-3 cta" *ngIf="!isLoggedIn">
-                    <a routerLink="/partner" class="join">Make money</a>
+                    <a routerLink="/join" class="join">Make money</a>
                 </div>
             </div>
         </div>

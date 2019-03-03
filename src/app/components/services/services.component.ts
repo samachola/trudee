@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { PartnersService } from '../../services/partners/partners.service';
 import { CategoryService } from '../../services/categories/category.service';
-import { MapsAPILoader } from '@agm/core';
-/// <reference types="@types/googlemaps" />
+import { Router } from '@angular/router';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 
 
 @Component({
@@ -22,42 +22,31 @@ export class ServicesComponent implements OnInit {
   google: any;
 
 
-  @ViewChild('search') public searchElement: ElementRef;
+  // @ViewChild('search') public searchElement: ElementRef;
+  @ViewChild('placesRef') placesRef: GooglePlaceDirective;
   constructor(
     public partnerService: PartnersService,
     public categoryService: CategoryService,
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    public router: Router,
   ) { }
 
   ngOnInit() {
     this.getAllPartners();
     this.getAllCategories();
-
-    this.mapsAPILoader.load().then(
-      () => {
-        // @ts-ignore
-        const autocomplete = new google.maps.places.Autocomplete(this.searchElement.nativeElement, { types: ['address'] });
-        autocomplete.addListener('place_changed', () => {
-          this.ngZone.run(() => {
-            // @ts-ignore
-            const place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-            this.lat = place.geometry.location.lat();
-            this.lng = place.geometry.location.lng();
-            this.location = place.formatted_address;
-
-            if (place.geometry === undefined || place.geometry === null) {
-              return;
-            }
-          });
-        });
-      }
-    );
   }
 
   onChange(event): void {
     this.category = event.target.value;
+  }
+
+  public handleAddressChange(address) {
+    // Do some stuff
+    console.log(address);
+
+    this.lat = address.geometry.location.lat();
+    this.lng = address.geometry.location.lng();
+    this.location = address.formatted_address;
   }
 
   async filterPartners() {
@@ -87,15 +76,18 @@ export class ServicesComponent implements OnInit {
   /**
    * Get categories
    */
-  getAllCategories() {
-    this.categoryService.getAllCategories()
-      .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          const category = { ...doc.data() };
-          this.categories.push(category);
-        });
-      })
-      .catch(err => console.log(err));
+  async getAllCategories() {
+    const categoryQuerySnapshot = await this.categoryService.getAllCategories();
+    categoryQuerySnapshot.subscribe(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        const category = { ...doc.data() };
+        this.categories.push(category);
+      });
+    });
+  }
+
+  toProfilePage(id) {
+    this.router.navigate(['services', id]);
   }
 
 }

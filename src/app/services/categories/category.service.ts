@@ -12,6 +12,6 @@ export class CategoryService {
    * Get all categories
    */
   async getAllCategories() {
-    return await this.db.collection('categories').get().toPromise();
+    return await this.db.collection('categories').get();
   }
 }

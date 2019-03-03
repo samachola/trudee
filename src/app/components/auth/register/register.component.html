@@ -2,60 +2,77 @@
     <!-- APPLICATION HEADER-->
     <app-header></app-header>
     <!-- END APPLICATION HEADER-->
-    <section class="protected-gallery">
-
-        <div class="protected-gallery-wrap" id="startscreen">
-            <content>
-                <section class="section1 pt-5">
-
-                    <div class="protected-gallery__content ml-auto mr-auto mt-5 col-lg-5 col-md-6">
-                        <h3>Hello, welcome! <br /> Join and Make money with us.</h3>
-                        <p class="mb-5 text-normal">Signup to make money with us.</p>
-
-                        <p class="mb-5 text-normal">{{ error }} </p>
-                        <form class="m-t-25 register" (ngSubmit)="onSubmit()" #partnerRegForm="ngForm">
-                            <div class="col-lg-12 mb-5">
-                                <input class="au-input" type="text" name="name" [(ngModel)]="user.name" placeholder="Your Name ...">
-                            </div>
-
-                            <div class="col-lg-12 mb-5">
-                                <input class="au-input" type="email" name="id" [(ngModel)]="user.email" placeholder="Your Email ...">
-                            </div>
-
-                            <div class="col-lg-12 mb-5">
-                                <input class="au-input" type="text" name="phone" [(ngModel)]="user.phone" placeholder="Your phone number ...">
-                            </div>
-                            <div class="col-lg-12 mb-5">
-                                <input class="au-input" type="text" name="idcard" [(ngModel)]="user.idcard" placeholder="Your ID number ...">
-                            </div>
-
-                            <div class="col-md-12 mb-5">
-                                <input class="au-input" type="text" placeholder="Your Location" name="location" id="autocomplete" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
-                            </div>
-                            <div class="col-md-12 mb-5">
-                                <!-- <input class="au-input" type="file" (change)="onFileChange($event"> -->
-                            </div>
-
-                            <div class="col-md-12 mb-5">
-                                <select class="au-input" (change)="onChange($event)" name="category">
-                                  <option disabled="disabled" selected>Select Category</option>
-                                  <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
-                                </select>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <input class="au-input" type="password" name="password" [(ngModel)]="user.password" placeholder="Your password ...">
-                            </div>
-
-                            <button class="au-btn au-btn--dark au-btn--p50" type="submit">Earn Money</button>
-                            <a routerLink="/login" class="pt-5"><b>Have an account? Login</b></a>
-                        </form>
-                    </div>
-                </section>
-            </content>
-
+    <div class="registration">
+        <div class="intro">
+            <h2>Earn money with us! </h2>
+            <p>Get hired by clients in your area.</p>
         </div>
-    </section>
+        <div class="form">
+            <p class="mb-5 text-normal">{{ error }} </p>
+            <form (ngSubmit)="onSubmit()" #partnerRegForm="ngForm">
+                <div class="form-row">
+                    <div class="wrapper">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" [(ngModel)]="user.name">
+                    </div>
+                    <div class="wrapper">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" [(ngModel)]="user.email">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="wrapper">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" name="phone" [(ngModel)]="user.phone">
+                    </div>
+                    <div class="wrapper">
+                        <label for="id">ID Number</label>
+                        <input type="text" name="idcard" [(ngModel)]="user.idcard">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="wrapper">
+                        <label for="category">Service Category</label>
+                        <select (change)="onChange($event)" name="category" id="category">
+                          <option disabled="disabled" selected>Select Category</option>
+                          <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+                        </select>
+                    </div>
+                    <div class="wrapper">
+                        <label for="location">Location</label>
+                        <input type="text" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="wrapper">
+                        <label for="photo">Profile photo</label>
+                        <input type="file" name="photo" (change)="onFileChange($event)">
+                    </div>
+                    <div class="wrapper">
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="wrapper">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" [(ngModel)]="user.password">
+                    </div>
+                    <div class="wrapper">
+                        <label for="cpassword">Confirm Password</label>
+                        <input type="password" name="cpassword" [(ngModel)]="user.cpassword">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="wrapper">
+                        <input type="submit">
+                    </div>
+                    <div class="wrapper">
+                        <a routerLink="/login"><b>Have an account? Login</b></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- FOOTER-->
     <app-footer></app-footer>
     <!-- END FOOTER-->

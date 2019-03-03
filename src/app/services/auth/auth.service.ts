@@ -62,7 +62,6 @@ export class AuthService {
   }
 
   emailSignup(userData) {
-
     return new Promise<any>((resolve, reject) => {
       firebase.auth().createUserWithEmailAndPassword(userData.email, userData.password)
         .then(user => {
@@ -98,6 +97,16 @@ export class AuthService {
         this.currentUserSubject.next(user);
       })
       .catch(err => console.log(err));
+  }
+
+  getCurrentUserDetails() {
+    let userData = {};
+    const userDocRef = this.db.collection('users').doc(this.afAuth.auth.currentUser.uid).get();
+    userDocRef.subscribe(doc => {
+      userData = doc.data();
+    });
+
+    return userData;
   }
 
   /**

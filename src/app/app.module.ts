@@ -19,6 +19,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { AuthService } from './services/auth/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { PartnersService } from './services/partners/partners.service';
 import { GooglePlacesDirective } from './directives/google-places.directive';
 import { ClientComponent } from './components/auth/client/client.component';
@@ -46,10 +47,7 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCi5s8s6hthogs8ch_fdtPLbOUFmZHGPso',
-      libraries: ['places'],
-    }),
+    GooglePlaceModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,

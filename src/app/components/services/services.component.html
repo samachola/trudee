@@ -3,119 +3,54 @@
     <app-header></app-header>
     <!-- END APPLICATION HEADER-->
 
-    <!-- CHECKOUT-->
-    <section class="checkout p-t-85">
-        <div class="container">
-
-            <div class="row request">
-
-                <div class="col-lg-12 p-t-30 p-b-30">
-                    <div class="col-md-5 wow fadeInUp float-left " data-wow-delay=".4s" data-wow-duration="1s">
-                        <div class="statistic__item">
-                            <div class="col-md-2 float-left">
-                                <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 480 480" style="enable-background:new 0 0 480 480;" xml:space="preserve" width="50px" height="50px">
-                                <g>
-                                    <path style="fill:#78B9EB;" d="M176,404c0,35.346,28.654,64,64,64s64-28.654,64-64V284H176V404z"/>
-                                    <path style="fill:#78B9EB;" d="M352,92v16h32V76c0-8.837-7.163-16-16-16h-96v32H352z"/>
-                                    <path style="fill:#78B9EB;" d="M128,60h-16c-8.837,0-16,7.163-16,16v32h32V92h80V60H128z"/>
-                                    <path style="fill:#78B9EB;" d="M256,28c0-8.837-7.163-16-16-16c-8.837,0-16,7.163-16,16v32h32V28z"/>
-                                </g>
-                                <g>
-                                    <path style="fill:#1E81CE;" d="M280,164v-64h64v16h48V76c0-13.255-10.745-24-24-24H264V28c0-13.255-10.745-24-24-24
-                                        c-13.255,0-24,10.745-24,24v24H112c-13.255,0-24,10.745-24,24v40h48v-16h64v64H0v56c0.044,39.746,32.254,71.956,72,72h96v112
-                                        c0,39.764,32.236,72,72,72s72-32.236,72-72V292h96c39.746-0.044,71.956-32.254,72-72v-56H280z M280,68h88c4.418,0,8,3.582,8,8v24
-                                        h-16V84h-80V68z M232,28c0-4.418,3.582-8,8-8s8,3.582,8,8v24h-16V28z M120,84v16h-16V76c0-4.418,3.582-8,8-8h88v16H120z M216,100
-                                        V68h48v96h-48V100z M296,404c0,30.928-25.072,56-56,56s-56-25.072-56-56V292h112V404z M464,220c-0.04,30.911-25.089,55.96-56,56H72
-                                        c-30.911-0.04-55.96-25.089-56-56v-40h448V220z"/>
-                                    <path style="fill:#1E81CE;" d="M360,132h16v16h-16V132z"/>
-                                    <path style="fill:#1E81CE;" d="M322.749,125.91l11.319-11.319l11.314,11.314l-11.319,11.319L322.749,125.91z"/>
-                                    <path style="fill:#1E81CE;" d="M390.627,125.9l11.314-11.314l11.319,11.319l-11.314,11.314L390.627,125.9z"/>
-                                    <path style="fill:#1E81CE;" d="M104,132h16v16h-16V132z"/>
-                                    <path style="fill:#1E81CE;" d="M134.623,125.937l11.314-11.314l11.319,11.319l-11.314,11.314L134.623,125.937z"/>
-                                    <path style="fill:#1E81CE;" d="M66.745,125.947l11.319-11.319l11.314,11.314L78.058,137.26L66.745,125.947z"/>
-                                    <path style="fill:#1E81CE;" d="M432,196h16v16h-16V196z"/>
-                                    <path style="fill:#1E81CE;" d="M432,220h16v16h-16V220z"/>
-                                    <path style="fill:#1E81CE;" d="M408,196h16v16h-16V196z"/>
-                                </g>
-                                </svg>
-                            </div>
-
-                            <div class="number-wrap col-md-10 float-left">
-                                <h4 class="text-pink number js-counter-up" data-counterup-time="1000">{{partners.length}}</h4>
-                                <h3 class="title">Partners available</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <form class="col-md-7 float-left" #filterForm="ngForm">
-                        <div class="col-md-6 float-left">
-                            <div class="au-input-group">
-                                <input type="text" class="form-control form-control-line" name="location" id="autocomplete" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 float-left">
-                            <div class="au-input-group">
-                                <select class="form-control" (change)="onChange($event)" id="exampleSelect1">
-                                    <option disabled="disabled">Select Category</option>
-                                    <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-3 float-left">
-                            <button (click)="filterPartners()" type="button" class="mt-85 btn btn-primary">Find Pro</button>
-                        </div>
-                    </form>
-                </div>
-
+    <div class="services-container">
+        <div class="services-intro">
+            <div class="intro">
+                <h2>Find house cleaning, repair, plumbing, electrical or mechanical services near you.</h2>
             </div>
         </div>
-    </section>
-    <!-- END CHECKOUT-->
 
-    <!-- SHOP-->
-    <section class="shop hytauto p-t-70 p-b-70 js-list-load">
-        <div class="container">
-            <div class="row">
-                <!-- TODO return *ngFor let partner of partners-->
-                <div *ngFor="let partner of partners" class="col-lg-4">
-                    <div class="shop__item">
-                        <div class="image">
-                            <div class="bg-overlay bg-overlay--opa30"></div>
-                            <div class="sale-tag"><span class="icon-badge"></span></div>
-                            <img src="assets/images/shop-01.jpg" alt="young lucy" />
-                            <div class="tool-box">
-                                <a class="js-addcart" routerLink="/services/{{partner.id}}">
-                                    Request Service
-                                </a>
-                                <a routerLink="/services/{{partner.id}}">
-                                    View Profile
-                                </a>
-                            </div>
+        <div class="service-providers">
+            <div class="filter">
+                <form>
+                    <div class="wrapper">
+                        <label for="location">Location</label>
+                        <input type="text" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+                    </div>
+                    <div class="wrapper">
+                        <label for="category">Category</label>
+                        <select class="form-control" (change)="onChange($event)" id="exampleSelect1">
+                            <option disabled="disabled">Select Category</option>
+                            <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+                        </select>
+                    </div>
+                    <div class="wrapper">
+                        <input (click)="filterPartners()" type="submit" value="Search">
+                    </div>
+                </form>
+            </div>
+            <div class="providers">
+                <div *ngFor="let partner of partners" class="provider">
+                    <div class="provider-image">
+                        <img src="assets/images/shop-01.jpg" alt="young lucy" />
+
+                        <p class="category">{{ partner.category }}</p>
+                    </div>
+                    <div class="provider-details">
+                        <h3 class="name">{{ partner.name }}</h3>
+                        <p class="category">Service Category: {{ partner.category }}</p>
+                        <p class="location">Location: Mountain View Westlands</p>
+                        <div class="contact">
+                            <span>Phone: {{ partner.phone }} |</span><span> Email: {{ partner.email }} </span>
                         </div>
-                        <div class="content">
-                            <h3>
-                                <a class="js-name" routerLink="/services/{{partner.id}}">{{ partner.name }}</a>
-                            </h3>
-                            <span class="price">{{partner.category}}</span>
-                            <div class="star-rating">
-                                <span><span class="fa fa-star" data-rating="1"></span><span class="badge badge-primary">5</span></span>
-                                <input type="hidden" name="whatever1" class="rating-value" value="2.56">
-                            </div>
-                        </div>
+                        <button (click)="toProfilePage(partner.id)"> Book Trudy</button>
                     </div>
                 </div>
-
             </div>
-
-            <!--div class="see-more">
-                <a class="au-btn au-btn--dark au-btn--p50 js-load-btn" href="#">see more</a>
-            </div-->
         </div>
-    </section>
-    <!-- END SHOP-->
+    </div>
+
+
     <!-- FOOTER-->
     <app-footer></app-footer>
     <!-- END FOOTER-->

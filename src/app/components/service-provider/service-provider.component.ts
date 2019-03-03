@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-
-import { MapsAPILoader } from '@agm/core';
-
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { PartnersService } from 'src/app/services/partners/partners.service';
 
 @Component({
@@ -29,8 +25,7 @@ export class ServiceProviderComponent implements OnInit {
   currentUser = true;
   constructor(
     public route: ActivatedRoute,
-    public partnerService: PartnersService,
-    private mapsAPILoader: MapsAPILoader) { }
+    public partnerService: PartnersService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
