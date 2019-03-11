@@ -43,8 +43,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.auth.userSignOut()
       .then(() => {
         localStorage.clear();
-        // this.isLoggedIn = false;
-
         // TODO: create a dedicate logout route.
         this.router.navigate(['/logout']);
       })
