@@ -7,6 +7,8 @@ import { ClientComponent } from './components/auth/client/client.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ServiceProviderComponent } from './components/service-provider/service-provider.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
+import { SettingsComponent } from './components/settings/settings.component';
+
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -16,6 +18,7 @@ const routes: Routes = [
   { path: 'customer-signup', component: ClientComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'services/:id', component: ServiceProviderComponent },
+  { path: 'settings', component: SettingsComponent },
 ];
 
 @NgModule({

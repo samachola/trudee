@@ -25,12 +25,13 @@
                         <label for="phone">Phone Number</label>
                         <input type="text" name="phone" [(ngModel)]="user.phone">
                     </div>
+
                     <div class="wrapper">
-                        <label for="id">ID Number</label>
-                        <input type="text" name="idcard" [(ngModel)]="user.idcard">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" [(ngModel)]="user.password">
                     </div>
                 </div>
-                <div class="form-row">
+                <!-- <div class="form-row">
                     <div class="wrapper">
                         <label for="category">Service Category</label>
                         <select (change)="onChange($event)" name="category" id="category">
@@ -42,8 +43,8 @@
                         <label for="location">Location</label>
                         <input type="text" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
                     </div>
-                </div>
-                <div class="form-row">
+                </div> -->
+                <!-- <div class="form-row">
                     <div class="wrapper">
                         <label for="photo">Profile photo</label>
                         <input type="file" name="photo" (change)="onFileChange($event)" accept=".png,.jpg">
@@ -51,17 +52,7 @@
                     <div class="wrapper">
 
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="wrapper">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" [(ngModel)]="user.password">
-                    </div>
-                    <div class="wrapper">
-                        <label for="cpassword">Confirm Password</label>
-                        <input type="password" name="cpassword" [(ngModel)]="user.cpassword">
-                    </div>
-                </div>
+                </div> -->
                 <div class="form-row">
                     <div class="wrapper">
                         <input type="submit">

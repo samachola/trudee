@@ -408,7 +408,7 @@ section.protected-gallery {
 }
 
 .registration .form form .form-row .wrapper {
-    width: 48%;
+    width: 100%;
     margin-left: 2%;
 }
 
@@ -612,4 +612,45 @@ section.protected-gallery {
     background: #2b1437;
     color: #FFF;
     padding: 5px;
+}
+
+
+/* Settings Page style.  */
+
+.settings {
+    display: grid;
+    grid-template-columns: 30% 60%;
+    grid-gap: 5%;
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 5%;
+}
+
+.settings .update-settings .info {
+    width: 100%;
+    margin: 4px auto;
+}
+
+.settings .update-settings .info h3 {
+    font-weight: 100;
+}
+
+.settings .update-settings .info form {
+    width: 100%;
+    margin: 2em auto;
+}
+
+.settings .update-settings .info form .wrapper {
+    width: 100%;
+    margin: 4px auto;
+}
+
+.settings .update-settings .info form .wrapper label {
+    display: block;
+    font-weight: 700;
+}
+
+.settings .update-settings .info form .wrapper input[type="text"],
+.settings .update-settings .info form .wrapper input[type="email"] {
+    width: 50%;
 }

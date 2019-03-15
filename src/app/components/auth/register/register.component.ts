@@ -86,10 +86,11 @@ export class RegisterComponent implements OnInit {
    * @param user - userDetails
    */
   createUser(uid, user) {
-    const { email, name } = user;
+    const { email, name, phone } = user;
     const userDetails = {
       name,
-      email
+      email,
+      phone,
     };
 
     this.authService.newUser(uid, userDetails)
@@ -105,22 +106,18 @@ export class RegisterComponent implements OnInit {
    * @param uid - userId
    * @param user - userDetails
    */
-  createPartner(uid, user) {
+  async createPartner(uid, user) {
     const { name, email, idcard, phone, category, location, lat, lng } = user;
-    const partnerdetails = { name, email, idcard, phone, location, lat, lng, category };
-
-    this.partnerService.newPartner(uid, partnerdetails)
-      .then(res => {
-        console.log({ response: res });
-        this.router.navigate(['/login']);
-      })
-      .catch(err => console.log({ response: err }));
+    const partnerdetails = { name, email, phone };
+    try {
+      await this.partnerService.newPartner(uid, partnerdetails);
+      this.router.navigate(['/settings']);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   public handleAddressChange(address) {
-    // Do some stuff
-    console.log(address);
-
     this.lat = address.geometry.location.lat();
     this.lng = address.geometry.location.lng();
     this.location = address.formatted_address;
@@ -131,8 +128,6 @@ export class RegisterComponent implements OnInit {
   }
 
   async onFileChange(event) {
-    console.log('onFileChange');
-
     const storageRef = this.storage.ref('avatars/randomuserid/avatar.jpg');
     await storageRef.put(event.target.files[0]);
 

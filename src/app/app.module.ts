@@ -28,6 +28,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { CategoryService } from './services/categories/category.service';
 import { ServiceProviderComponent } from './components/service-provider/service-provider.component';
 import { LogoutComponent } from './components/auth/logout/logout.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
     ClientComponent,
     ServicesComponent,
     ServiceProviderComponent,
-    LogoutComponent
+    LogoutComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
