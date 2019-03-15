@@ -19,6 +19,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { AuthService } from './services/auth/auth.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { PartnersService } from './services/partners/partners.service';
 import { GooglePlacesDirective } from './directives/google-places.directive';
@@ -50,6 +51,7 @@ import { LogoutComponent } from './components/auth/logout/logout.component';
     GooglePlaceModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
   ],
   providers: [

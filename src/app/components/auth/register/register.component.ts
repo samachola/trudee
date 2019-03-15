@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-register',
@@ -44,7 +45,7 @@ export class RegisterComponent implements OnInit {
     public categoryService: CategoryService,
     public afAuth: AngularFireAuth,
     public router: Router,
-    private ngZone: NgZone) { }
+    private storage: AngularFireStorage) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -85,7 +86,7 @@ export class RegisterComponent implements OnInit {
    * @param user - userDetails
    */
   createUser(uid, user) {
-    const { email, name, phone } = user;
+    const { email, name } = user;
     const userDetails = {
       name,
       email
@@ -111,7 +112,6 @@ export class RegisterComponent implements OnInit {
     this.partnerService.newPartner(uid, partnerdetails)
       .then(res => {
         console.log({ response: res });
-        console.log('We should get response {Object}');
         this.router.navigate(['/login']);
       })
       .catch(err => console.log({ response: err }));
@@ -130,8 +130,13 @@ export class RegisterComponent implements OnInit {
     this.user.category = event.target.value;
   }
 
-  onFileChange(event): void {
+  async onFileChange(event) {
     console.log('onFileChange');
+
+    const storageRef = this.storage.ref('avatars/randomuserid/avatar.jpg');
+    await storageRef.put(event.target.files[0]);
+
+    storageRef.getDownloadURL().subscribe(data => console.log(data));
   }
 
   async getAllCategories() {
