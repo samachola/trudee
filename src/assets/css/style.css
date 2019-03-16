@@ -546,37 +546,19 @@ section.protected-gallery {
 }
 
 .services-container .service-providers .providers {
-    width: 50%;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 5%;
 }
 
 .services-container .service-providers .providers .provider {
     width: 100%;
     margin: 0 auto;
     display: flex;
-    align-items: flex-start;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
     margin-bottom: 20px;
-}
-
-.services-container .service-providers .providers .provider .provider-image {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    margin-right: 20px;
-}
-
-.services-container .service-providers .providers .provider .provider-image .category {
-    background: #00cdfd;
-    padding: 4px;
-    color: #2b1437;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.services-container .service-providers .providers .provider .provider-image img {
-    width: 100%;
-    margin: 0 auto;
+    justify-content: center;
 }
 
 .services-container .service-providers .providers .provider .provider-details {
@@ -584,6 +566,22 @@ section.protected-gallery {
     display: flex;
     flex-direction: column;
     padding: 17px 0;
+    align-items: center;
+}
+
+.services-container .service-providers .providers .provider .provider-details .provider-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #333;
+    top: -40px;
+    position: relative;
+}
+
+.services-container .service-providers .providers .provider .provider-details .provider-image img {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .services-container .service-providers .providers .provider .provider-details .name {
@@ -622,13 +620,49 @@ section.protected-gallery {
     grid-template-columns: 30% 60%;
     grid-gap: 5%;
     width: 70%;
-    margin: 0 auto;
+    margin: 2% auto;
     padding-top: 5%;
+}
+
+.settings .profile .profile-dets {
+    width: 100%;
+    margin: 4px auto;
+}
+
+.settings .profile .profile-dets .image {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background: #f5f5f5;
+    display: grid;
+}
+
+.settings .profile .profile-dets .image input[type="file"] {
+    align-self: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    color: #333;
+    opacity: .2;
+}
+
+.settings .profile .profile-dets h3,
+p {
+    font-weight: 300;
+    padding: 2px;
+}
+
+.settings .profile .profile-dets .image input[type="file"]:hover {
+    opacity: 1;
 }
 
 .settings .update-settings .info {
     width: 100%;
     margin: 4px auto;
+}
+
+.settings .update-settings {
+    align-self: flex-end;
 }
 
 .settings .update-settings .info h3 {
@@ -653,4 +687,24 @@ section.protected-gallery {
 .settings .update-settings .info form .wrapper input[type="text"],
 .settings .update-settings .info form .wrapper input[type="email"] {
     width: 50%;
+    padding: 4px;
+    border-radius: 5px;
+    height: 42px;
+    border: 1px solid #a6a6a6;
+}
+
+.settings .update-settings .info form .wrapper select {
+    width: 50%;
+    border-radius: 0;
+    height: 46px;
+}
+
+.settings .update-settings .info form .wrapper input[type="submit"] {
+    padding: 5px;
+    background: #2b1437;
+    color: #fff;
+    text-transform: capitalize;
+    border: none;
+    border-radius: 5px;
+    margin-top: 2px;
 }

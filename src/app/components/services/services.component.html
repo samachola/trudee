@@ -31,12 +31,9 @@
             </div>
             <div class="providers">
                 <div *ngFor="let partner of partners" class="provider">
-                    <div class="provider-image">
-                        <img src="assets/images/shop-01.jpg" alt="young lucy" />
-
-                        <p class="category">{{ partner.category }}</p>
-                    </div>
                     <div class="provider-details">
+                        <div class="provider-image" [ngStyle]="{'background': '#999'}">
+                        </div>
                         <h3 class="name">{{ partner.name }}</h3>
                         <p class="category">Service Category: {{ partner.category }}</p>
                         <p class="location">{{ partner.location }}</p>

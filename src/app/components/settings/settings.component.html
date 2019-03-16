@@ -5,10 +5,13 @@
     <div class="settings">
         <div class="profile">
             <div class="profile-dets">
-                <div class="image"></div>
-                <h2>Name</h2>
+                <div class="image">
+                    <input type="file" name="imege" placeholder="change image">
+                </div>
+                <h3>Name</h3>
                 <p class="email">Email</p>
                 <p>Location</p>
+                <p>Phone</p>
             </div>
         </div>
         <div class="update-settings">
@@ -27,6 +30,10 @@
                         <label for="phone">Phone</label>
                         <input type="text" name="phone" id="">
                     </div>
+
+                    <div class="wrapper">
+                        <input type="submit" name="submit" value="update details">
+                    </div>
                 </form>
             </div>
 
@@ -35,7 +42,10 @@
                 <form action="#">
                     <div class="wrapper">
                         <label for="name">Category</label>
-                        <input type="text" name="name" id="">
+                        <select name="category">
+                          <option disabled>Select Category</option>
+                          <option *ngFor="let category of categories()" [value]="category">{{ category }}</option>
+                        </select>
                     </div>
                     <div class="wrapper">
                         <label for="email">Location</label>
@@ -44,6 +54,10 @@
                     <div class="wrapper">
                         <label for="phone">ID Number</label>
                         <input type="text" name="phone" id="">
+                    </div>
+
+                    <div class="wrapper">
+                        <input type="submit" name="submit" value="update partner details">
                     </div>
                 </form>
             </div>
