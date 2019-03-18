@@ -91,11 +91,13 @@ export class RegisterComponent implements OnInit {
       name,
       email,
       phone,
+      image: '',
     };
 
     this.authService.newUser(uid, userDetails)
       .then(res => {
         this.createPartner(uid, user);
+        this.authService.getUserDetails(uid);
       })
       .catch(err => console.log(err));
   }

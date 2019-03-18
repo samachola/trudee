@@ -15,11 +15,11 @@
                 <form>
                     <div class="wrapper">
                         <label for="location">Location</label>
-                        <input type="text" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+                        <input type="text" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
                     </div>
                     <div class="wrapper">
                         <label for="category">Category</label>
-                        <select class="form-control" (change)="onChange($event)" id="exampleSelect1">
+                        <select class="form-control" (change)="onChange($event)">
                             <option disabled="disabled">Select Category</option>
                             <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
                         </select>
@@ -32,10 +32,10 @@
             <div class="providers">
                 <div *ngFor="let partner of partners" class="provider">
                     <div class="provider-details">
-                        <div class="provider-image" [ngStyle]="{'background': '#999'}">
+                        <div class="provider-image" [ngStyle]="{'background-image': 'url(' + partner.image +')', 'background-size': 'cover', 'background-position': 'center'}">
                         </div>
                         <h3 class="name">{{ partner.name }}</h3>
-                        <p class="category">Service Category: {{ partner.category }}</p>
+                        <p class="category">{{ partner.category }}</p>
                         <p class="location">{{ partner.location }}</p>
                         <div class="contact">
                             <span>Phone: {{ partner.phone }} |</span><span> Email: {{ partner.email }} </span>
@@ -49,6 +49,6 @@
 
 
     <!-- FOOTER-->
-    <app-footer></app-footer>
+    <!-- <app-footer></app-footer> -->
     <!-- END FOOTER-->
 </div>

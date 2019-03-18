@@ -81,30 +81,29 @@ export class AuthService {
   }
 
   getUserDetails(uid) {
-    console.log(uid);
     const userRef = this.db.collection('users').doc(uid);
     userRef.get()
       .toPromise()
       .then(res => {
-        const { name, email, phone } = res.data();
         const user = {
-          name,
-          email,
-          phone
+          id: uid,
+          ...res.data(),
         };
 
         localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+        // this.currentUserSubject.next(user);
       })
       .catch(err => console.log(err));
   }
 
   getCurrentUserDetails() {
     let userData = {};
-    const userDocRef = this.db.collection('users').doc(this.afAuth.auth.currentUser.uid).get();
-    userDocRef.subscribe(doc => {
-      userData = doc.data();
-    });
+    if (this.afAuth.auth.currentUser) {
+      const userDocRef = this.db.collection('users').doc(this.afAuth.auth.currentUser.uid).get();
+      userDocRef.subscribe(doc => {
+        userData = doc.data();
+      });
+    }
 
     return userData;
   }

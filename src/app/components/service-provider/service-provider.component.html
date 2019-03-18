@@ -102,7 +102,7 @@
                                 <span class="icon-pencill"></span>
                             </a>
                             <div class="m-t-30 profile">
-                                <img src="assets/images/pro.jpg" class="rounded-circle" width="100" />
+                                <img *ngIf="partner.image" [src]="partner.image" class="rounded-circle" width="100" />
                                 <h4 class="card-title m-t-10">{{ partner.name }}</h4>
                                 <p class="card-subtitle">{{ partner.category }}</p>
                                 <div class="row text-center justify-content-md-center ratestar">
@@ -122,7 +122,8 @@
                                         <span class="fa fa-star-o"></span>
                                     </a>
                                 </div>
-                                <button class="btn au-btn m-t-20" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Request Service</button>
+                                <button class="btn au-btn m-t-20" type="button" class="btn btn-primary" data-toggle="modal" [disabled]="!isLoggedIn" data-target="#exampleModal">Request Service</button>
+                                <p *ngIf="!isLoggedIn">you must be logged in to request a pro.</p>
                             </div>
                         </div>
                         <div>

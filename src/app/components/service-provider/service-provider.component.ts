@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PartnersService } from 'src/app/services/partners/partners.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-service-provider',
@@ -25,7 +26,9 @@ export class ServiceProviderComponent implements OnInit {
   currentUser = true;
   constructor(
     public route: ActivatedRoute,
-    public partnerService: PartnersService) { }
+    public partnerService: PartnersService,
+    private afAuth: AngularFireAuth,
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -43,6 +46,10 @@ export class ServiceProviderComponent implements OnInit {
 
   async requestPro() {
     console.log({ date: this.date, description: this.booking.description, category: this.partner.category });
+  }
+
+  get isLoggedIn() {
+    return this.afAuth.auth.currentUser;
   }
 
 

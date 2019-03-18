@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    localStorage.clear();
   }
 
   async onSubmit() {
@@ -32,12 +33,6 @@ export class LoginComponent implements OnInit {
       this.auth.getUserDetails(currentUser.uid);
       this.router.navigate(['/']);
     }
-    // this.auth.emailSignIn(this.user)
-    //   .then(res => {
-    //     this.auth.getUserDetails(res.user.uid);
-    //     this.router.navigate(['/']);
-    //   })
-    //   .catch(err => console.log(err));
   }
 
   goToPartners() {

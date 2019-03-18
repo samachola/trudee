@@ -5,30 +5,27 @@
     <div class="settings">
         <div class="profile">
             <div class="profile-dets">
-                <div class="image">
-                    <input type="file" name="imege" placeholder="change image">
+                <progress max="100" [value]="(uploadProgress | async)"></progress>
+                <div class="image" [ngStyle]="{'background-image': 'url(' + currentUser.image +')', 'background-repeat': 'none', 'background-position': 'center',  'background-size': 'cover'}">
+                    <input type="file" name="image" (change)="onFileChange($event)" accept=".png,.jpg">
                 </div>
-                <h3>Name</h3>
-                <p class="email">Email</p>
-                <p>Location</p>
-                <p>Phone</p>
             </div>
         </div>
         <div class="update-settings">
             <div class="info">
                 <h3>Update Your Details</h3>
-                <form action="#">
+                <form (ngSubmit)="onSubmitUser()" #userUpdateForm="ngForm">
                     <div class="wrapper">
                         <label for="name">Name</label>
-                        <input type="text" name="name" id="">
+                        <input type="text" name="name" id="" [(ngModel)]="currentUser.name">
                     </div>
                     <div class="wrapper">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="">
+                        <input type="email" name="email" id="" [(ngModel)]="currentUser.email">
                     </div>
                     <div class="wrapper">
                         <label for="phone">Phone</label>
-                        <input type="text" name="phone" id="">
+                        <input type="text" name="phone" id="" [(ngModel)]="currentUser.phone">
                     </div>
 
                     <div class="wrapper">
@@ -37,23 +34,23 @@
                 </form>
             </div>
 
-            <div class="info">
+            <div *ngIf="isPartner()" class="info">
                 <h3>Update Provider Info</h3>
-                <form action="#">
+                <form #partnerUpdateForm="ngForm" (ngSubmit)="onSubmitPartner()">
                     <div class="wrapper">
                         <label for="name">Category</label>
-                        <select name="category">
+                        <select name="category" (change)="onChange($event)">
                           <option disabled>Select Category</option>
-                          <option *ngFor="let category of categories()" [value]="category">{{ category }}</option>
+                          <option *ngFor="let cat of categories" [value]="cat.name" [selected]="cat.name == category">{{ cat.name }}</option>
                         </select>
                     </div>
                     <div class="wrapper">
-                        <label for="email">Location</label>
-                        <input type="email" name="email" id="">
+                        <label for="location">Location</label>
+                        <input type="text" ngx-google-places-autocomplete [options]='options' [placeholder]="location" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
                     </div>
                     <div class="wrapper">
                         <label for="phone">ID Number</label>
-                        <input type="text" name="phone" id="">
+                        <input type="text" name="id" [(ngModel)]="id">
                     </div>
 
                     <div class="wrapper">

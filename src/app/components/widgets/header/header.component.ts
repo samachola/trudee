@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.currentUser = this.auth.getCurrentUserDetails();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnDestroy() {
@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .then(() => {
         localStorage.clear();
         // TODO: create a dedicate logout route.
-        this.router.navigate(['/logout']);
+        this.router.navigate(['/login']);
       })
       .catch(err => console.log(err));
   }

@@ -19,8 +19,11 @@
                             <li class="list-inline-item has-dropdown">
                                 <a routerLink="/services">Request Pro</a>
                             </li>
+                            <li *ngIf="isLoggedIn" class="list-inline-item has-dropdown">
+                                <a routerLink="/settings">Settings</a>
+                            </li>
 
-                            <li class="list-inline-item has-dropdown">
+                            <li *ngIf="!isLoggedIn" class="list-inline-item has-dropdown">
                                 <a href="#">About</a>
                             </li>
 
@@ -31,8 +34,8 @@
                     </nav>
 
                     <div *ngIf="isLoggedIn" class="search-btn-wrap col-md-3 loggedin">
-                        <div class="profile"><img src="assets/images/pro.jpg" class="rounded-circle" width=""></div>
-                        <h6 (click)="logout()"> {{ currentUser.name }} <span>Log out</span></h6>
+                        <div class="profile"><img [src]="currentUser.image" class="rounded-circle" width=""></div>
+                        <h6 (click)="logout()"> <span>{{ currentUser.name }} | Log out</span></h6>
                     </div>
                 </div>
 
